@@ -109,6 +109,55 @@ body {
     transform: scale(1.05);
 }
 
+/* --- Фото именинника --- */
+.birthday-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.birthday-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 8px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: block;
+    background-color: #ffffff;
+}
+
+.birthday-name {
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Поздравление (текст из файла) --- */
+.pozdravlenie {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 15px;
+}
+
+.pozdravlenie-text {
+    white-space: pre-wrap;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    text-align: left;
+    max-width: 100%;
+    word-wrap: break-word;
+    margin: 0 auto;
+}
+
 /* --- Персонажи --- */
 .character {
     position: absolute;
@@ -121,6 +170,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    background: transparent;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
 }
 
@@ -268,5 +318,19 @@ body {
 
     .invite-title {
         font-size: 32px;
+    }
+
+    .birthday-photo {
+        width: 250px;
+        height: 250px;
+        border-width: 12px;
+    }
+
+    .birthday-name {
+        font-size: 28px;
+    }
+
+    .pozdravlenie-text {
+        font-size: 16px;
     }
 }
