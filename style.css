@@ -6,6 +6,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'SRGMSType';
+    src: url('SRGMsType.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --bg-main: #E6F7FF;             /* Основной светло-голубой фон */
     --bg-top-blue: #8AB4F8;        /* Цвет верхнего баннера с горошком */
@@ -156,7 +163,7 @@ body {
 
 .pozdravlenie-text {
     white-space: pre-wrap;
-    font-family: 'Twinkle Star', 'Arial', sans-serif;
+    font-family: 'SRGMSType', 'Twinkle Star', 'Arial', sans-serif;
     font-size: 16px;
     line-height: 1.7;
     color: var(--dark-gray);
