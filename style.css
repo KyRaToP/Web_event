@@ -1,0 +1,272 @@
+/* --- Цветовая палитра (подобрана по изображению) --- */
+:root {
+    --bg-main: #E6F7FF;             /* Основной светло-голубой фон */
+    --bg-top-blue: #8AB4F8;        /* Цвет верхнего баннера с горошком */
+    --accent-blue: #3B82F6;        /* Насыщенный синий для логотипа и акцентов */
+    --royal-gold: #F5C518;          /* Золотой цвет короны и трона */
+    --dark-gray: #2C3E50;           /* Темно-серый для костюмов и декора */
+    --white: #FFFFFF;              /* Белый цвет */
+    --balloon-light: #A0C4FF;      /* Светлый оттенок шаров */
+    --balloon-dark: #4F95D9;       /* Темный оттенок шаров */
+    --sparkle: rgba(255, 255, 255, 0.8); /* Эффект блесток */
+}
+
+/* --- Базовые настройки (Mobile-First) --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+/* --- Основной контейнер --- */
+.invitation-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px; /* Оптимальная ширина для мобильного */
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+/* --- Фоновый узор (горошек сверху) --- */
+.bg-pattern-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-color: var(--bg-top-blue);
+    background-image: radial-gradient(circle, transparent 10px, var(--white) 10px);
+    background-size: 40px 40px;
+    z-index: 1;
+}
+
+/* --- Центральная область (Текст) --- */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 140px 20px 30px; /* Отступы сверху для перекрытия декором */
+    color: var(--dark-gray);
+}
+
+.invite-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.invite-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.event-details {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.event-details p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.rsvp-btn {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.rsvp-btn:hover {
+    background-color: #2563EB;
+    transform: scale(1.05);
+}
+
+/* --- Персонажи --- */
+.character {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    z-index: 5;
+}
+
+.char-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+/* Позиционирование персонажей */
+.flying-boss {
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.glasses-boss {
+    bottom: 20px;
+    left: -10px;
+}
+
+.throne-boss {
+    bottom: 10px;
+    right: -15px;
+}
+
+/* --- Логотип BABY BOSS --- */
+.logo-area {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: 2px 2px 0px var(--white), -1px -1px 0px var(--white);
+    /* Для идеального стиля можно подключить шрифт типа Impact или Bebas Neue */
+}
+
+/* --- Декоративные элементы (галстуки, портфели) --- */
+.decor {
+    position: absolute;
+    z-index: 3;
+}
+
+.tie-top {
+    width: 30px;
+    height: 80px;
+    top: 100px;
+    left: 20%;
+    background-color: var(--dark-gray);
+    transform: rotate(-30deg);
+}
+
+.briefcase-left {
+    width: 40px;
+    height: 25px;
+    bottom: 80px;
+    left: 10%;
+    background-color: var(--dark-gray);
+    border-radius: 5px;
+    transform: rotate(-10deg);
+}
+
+.tie-right {
+    width: 30px;
+    height: 80px;
+    bottom: 100px;
+    right: 20%;
+    background-color: var(--dark-gray);
+    transform: rotate(30deg);
+}
+
+/* --- Имитация шаров по бокам --- */
+.balloons-group {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.left-balloons {
+    left: -30px;
+    /* Градиент создает эффект наложения шаров */
+    background-image: 
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%),
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%),
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%);
+    background-size: 100% 60px;
+    background-repeat: no-repeat;
+    background-position: top, center, bottom;
+}
+
+.right-balloons {
+    right: -30px;
+    background-image: 
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%),
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%),
+        radial-gradient(circle, var(--balloon-light) 0%, var(--balloon-dark) 70%, transparent 100%);
+    background-size: 100% 60px;
+    background-repeat: no-repeat;
+    background-position: top, center, bottom;
+}
+
+/* --- Адаптивность для Desktop --- */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+    
+    .invitation-container {
+        max-width: 600px;
+    }
+
+    .flying-boss {
+        top: 60px;
+        width: 180px;
+        height: 180px;
+    }
+
+    .glasses-boss {
+        bottom: 40px;
+        left: -20px;
+        width: 180px;
+        height: 180px;
+    }
+
+    .throne-boss {
+        bottom: 30px;
+        right: -25px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .content-wrapper {
+        padding: 180px 40px 40px;
+    }
+
+    .logo-text {
+        font-size: 54px;
+    }
+
+    .invite-title {
+        font-size: 32px;
+    }
+}
