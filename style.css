@@ -1,4 +1,11 @@
 /* --- Цветовая палитра (подобрана по изображению) --- */
+@font-face {
+    font-family: 'Twinkle Star';
+    src: url('Twinkle Star.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --bg-main: #E6F7FF;             /* Основной светло-голубой фон */
     --bg-top-blue: #8AB4F8;        /* Цвет верхнего баннера с горошком */
@@ -130,11 +137,12 @@ body {
 
 .birthday-name {
     margin-top: 12px;
-    font-size: 22px;
+    font-size: 36px;
     font-weight: 800;
     color: var(--dark-gray);
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-family: 'Twinkle Star', cursive, sans-serif;
 }
 
 /* --- Поздравление (текст из файла) --- */
@@ -148,9 +156,9 @@ body {
 
 .pozdravlenie-text {
     white-space: pre-wrap;
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
+    font-family: 'Twinkle Star', 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
     color: var(--dark-gray);
     text-align: left;
     max-width: 100%;
@@ -178,7 +186,7 @@ body {
 .flying-boss {
     top: 40px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleX(1.6);
 }
 
 .glasses-boss {
@@ -187,8 +195,10 @@ body {
 }
 
 .throne-boss {
-    bottom: 10px;
-    right: -15px;
+    bottom: 0px;
+    right: 0px;
+    width: 120px;
+    height: 120px;
 }
 
 /* --- Логотип BABY BOSS --- */
@@ -292,6 +302,7 @@ body {
         top: 60px;
         width: 180px;
         height: 180px;
+        transform: translateX(-50%) scaleX(1.35);
     }
 
     .glasses-boss {
@@ -302,8 +313,8 @@ body {
     }
 
     .throne-boss {
-        bottom: 30px;
-        right: -25px;
+        bottom: 0px;
+        right: 0px;
         width: 200px;
         height: 200px;
     }
@@ -327,7 +338,7 @@ body {
     }
 
     .birthday-name {
-        font-size: 28px;
+        font-size: 44px;
     }
 
     .pozdravlenie-text {
