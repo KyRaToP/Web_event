@@ -3,82 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение: Босс-молокосос</title>
+    <title>Baby Boss — приглашение на 1 год</title>
+    <meta name="description" content="Закрытая вечеринка в честь 1-го Юбилея Михаила">
+    <meta property="og:title" content="Baby Boss — приглашение на 1 год">
+    <meta property="og:description" content="Приглашаю вас на закрытую вечеринку в честь моего 1-го Юбилея">
+    <meta property="og:image" content="design.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="invitation-container">
-        <!-- Фоновый узор (горошек сверху) -->
-        <div class="bg-pattern-top"></div>
+    <div class="page-bg"></div>
 
-        <!-- Левый нижний персонаж: босс в очках -->
-        <div class="character glasses-boss">
-            <!-- ЗАМЕНИТЕ src НА ПУТЬ К ВАШЕМУ ФАЙЛУ -->
-            <img src="images/boss_glasses.png" alt="Босс в очках" class="char-img">
-        </div>
+    <main class="invite" aria-label="Приглашение на день рождения">
+        <img class="invite-frame" src="design.jpg" alt="Оформление Baby Boss" width="720" height="1280" decoding="async">
 
-        <!-- Правый нижний персонаж: босс на троне -->
-        <div class="character throne-boss">
-            <!-- ЗАМЕНИТЕ src НА ПУТЬ К ВАШЕМУ ФАЙЛУ -->
-            <img src="images/boss_throne.png" alt="Босс на троне" class="char-img">
-        </div>
+        <div class="invite-panel">
+            <div class="invite-scroll">
+                <p class="invite-kicker">Закрытая вечеринка</p>
+                <h1 class="invite-heading">1 год</h1>
 
-        <!-- Логотип BABY BOSS -->
-        <div class="logo-area">
-            <!-- Если есть картинка логотипа с прозрачным фоном, используйте img. 
-                 Если нет, текст ниже стилизуется под логотип. -->
-            <span class="logo-text">BABY BOSS</span>
-        </div>
+                <div class="invite-body">
+                    <p class="lead">Уважаемые Партнеры, Акционеры и Инвесторы!</p>
+                    <p>
+                        Как единоличный и Генеральный директор всей детской площадки,
+                        я, Михаил, уведомляю вас о завершении первого финансового года.
+                        Приглашаю вас на закрытую вечеринку в честь моего 1-го Юбилея.
+                    </p>
 
-        <!-- Декоративные элементы (галстуки, портфели) -->
-        <div class="decor tie-top"></div>
-        <div class="decor briefcase-left"></div>
-        <div class="decor tie-right"></div>
+                    <p class="section-label">Будем решать серьезные вопросы:</p>
+                    <ol class="agenda">
+                        <li>Как монетизировать милую улыбку? <span class="note">(Я буду улыбаться, вы будете умиляться)</span></li>
+                        <li>Кто главный в доме? <span class="note">(Спойлер: я).</span></li>
+                        <li>Дегустация торта <span class="note">(методом тыканья пальцем).</span></li>
+                    </ol>
 
-        <!-- Группы шаров (имитация объема) -->
-        <div class="balloons-group left-balloons"></div>
-        <div class="balloons-group right-balloons"></div>
+                    <dl class="details">
+                        <div>
+                            <dt>Локация штаб-квартиры</dt>
+                            <dd>ресторан Хачапури Марико<br>(Одинцово, ул. Можайское шоссе, д. 122)</dd>
+                        </div>
+                        <div>
+                            <dt>Дата заседания</dt>
+                            <dd>2 августа 2026 года</dd>
+                        </div>
+                        <div>
+                            <dt>Время начала</dt>
+                            <dd>19:30</dd>
+                        </div>
+                    </dl>
 
-        <!-- Центральная область для текста приглашения -->
-        <main class="content-wrapper">
-            <h1 class="invite-title">СРОЧНО. ПЛАН ЗАХВАТА МИРА !!!</h1>
+                    <p class="fineprint">(Опоздание карается громким плачем и штрафными санкциями).</p>
 
-            <!-- Фото именинника -->
-            <div class="birthday-photo-wrapper">
-                <img src="birthday-person.jpg" alt="Михаил" class="birthday-photo"/>
-                <p class="birthday-name">Мне<br>1<br>годик !</p>
+                    <p>
+                        Инвестиции: приветствуются в виде игрушек, конвертов
+                        или всего, что можно погрызть.
+                    </p>
+                    <p class="emphasis">Явитесь все. Без вас мой авторитет пошатнется!</p>
+
+                    <p class="signoff">
+                        С уважением и деловым прищуром,<br>
+                        Ваш Босс,<br>
+                        <strong>Михаил</strong>
+                    </p>
+                </div>
+
+                <form class="rsvp-form" id="rsvp-form">
+                    <label class="rsvp-label" for="guest-name">Ваше имя</label>
+                    <input
+                        class="rsvp-input"
+                        id="guest-name"
+                        name="guestName"
+                        type="text"
+                        maxlength="60"
+                        placeholder="Как к вам обращаться?"
+                        autocomplete="name"
+                        required
+                    >
+                    <button class="rsvp-btn" type="submit" id="rsvp-btn">
+                        Я получил приглашение
+                    </button>
+                    <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
+                </form>
             </div>
+        </div>
+    </main>
 
-            <!-- Текст приглашения из файла text_pozdravleniya.txt -->
-            <div class="pozdravlenie">
-                <pre class="pozdravlenie-text">
-
-🎉 <strong>Уважаемые Партнеры, Акционеры и Инвесторы!</strong> 🎉
-Как единоличный и <strong>Генеральный директор</strong> всей детской площадки, я, Михаил, уведомляю вас о завершении первого финансового года. 📅
-<strong>Приглашаю вас на закрытую вечеринку</strong> в честь моего 1-го Юбилея! 🎂
-
-Будем решать серьезные вопросы:
-1.	Как монетизировать милую улыбку? (Я буду улыбаться, вы будете умиляться) 😊
-2.	<strong>Кто главный в доме?</strong> (Спойлер: я 👑).
-3.	Дегустация торта (методом тыканья пальцем) 🍰🖐️
-
-<strong>📍 Локация штаб-квартиры:</strong> <span style="font-weight:normal;">ресторан Хачапури Марико
-(Одинцово, ул. Можайское шоссе, д. 122) 🏢</span>
-<strong>📅 Дата заседания:</strong> <span style="font-weight:normal;">2 августа 2026 года</span>
-<strong>⏰ Время начала:</strong> <span style="font-weight:normal;">19:30 ⏳</span>
-(Опоздание карается громким плачем и штрафными санкциями) 😭⚖️
-
-<strong>💰 Инвестиции:</strong> приветствуются в виде игрушек, конвертов или всего, что можно погрызть. 🧸💵🍬
-<strong>Явитесь все. Без вас мой авторитет пошатнется!</strong> 💪😎
-
-С уважением и деловым прищуром,
-Ваш <strong>Босс</strong>,
-<strong>Михаил</strong> 🍼💼
-                </pre>
-            </div>
-
-            <button class="rsvp-btn">Подтвердить присутствие</button>
-        </main>
-    </div>
+    <script src="script.js" defer></script>
 </body>
 </html>

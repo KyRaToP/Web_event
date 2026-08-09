@@ -1,0 +1,4 @@
+{
+  "notifyUrl": "/api/notify",
+  "telegramUsername": ""
+}
