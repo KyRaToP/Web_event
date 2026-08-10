@@ -22,7 +22,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 ENV_PATH = ROOT / ".env"
 HOST = os.environ.get("HOST", "0.0.0.0")
 PORT = int(os.environ.get("PORT", "8000"))
@@ -170,6 +170,7 @@ def main() -> None:
     load_dotenv(ENV_PATH)
     server = ThreadingHTTPServer((HOST, PORT), InviteHandler)
     print(f"Invitation server: http://127.0.0.1:{PORT}")
+    print("Run from project root: python tools/server.py")
     print("Telegram notify endpoint: POST /api/notify")
     try:
         server.serve_forever()
