@@ -1,29 +1,15 @@
-@font-face {
-    font-family: "Twinkle Star";
-    src: url("Twinkle Star.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "SRGMSType";
-    src: url("SRGMsType.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
 :root {
     --sky: #9fd6f5;
     --sky-deep: #5eb7e8;
     --navy: #0b3a6e;
     --ink: #123558;
-    --paper: rgba(255, 255, 255, 0.92);
+    --paper: rgba(255, 255, 255, 0.86);
     --telegram: #2aabee;
     --telegram-dark: #229ed9;
     --soft-shadow: 0 18px 50px rgba(18, 74, 120, 0.28);
     --invite-ratio: 720 / 1280;
+    --font-display: "Unbounded", system-ui, sans-serif;
+    --font-body: "Nunito", system-ui, sans-serif;
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-right: env(safe-area-inset-right, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -45,7 +31,7 @@ html {
 body {
     min-height: 100%;
     min-height: 100dvh;
-    font-family: "SRGMSType", "Segoe UI", sans-serif;
+    font-family: var(--font-body);
     color: var(--ink);
     background: #6ec4ef;
     display: flex;
@@ -91,6 +77,7 @@ body {
     overflow: hidden;
     isolation: isolate;
     flex-shrink: 0;
+    container-type: inline-size;
     animation: invite-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -115,16 +102,26 @@ body {
     pointer-events: none;
 }
 
+/* Full-card content area over design.jpg */
 .invite-panel {
     position: absolute;
-    top: 25.2%;
-    bottom: 31%;
-    left: 12%;
-    right: 12%;
+    top: 4.5%;
+    bottom: 4.5%;
+    left: 5%;
+    right: 5%;
     display: flex;
     flex-direction: column;
-    border-radius: 6px;
-    background: transparent;
+    border-radius: 16px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.72) 0%,
+        rgba(255, 255, 255, 0.84) 40%,
+        rgba(255, 255, 255, 0.78) 100%
+    );
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+        0 10px 28px rgba(11, 58, 110, 0.12);
+    backdrop-filter: blur(1.5px);
     overflow: hidden;
 }
 
@@ -134,7 +131,7 @@ body {
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    padding: 4.5% 5.5% 5%;
+    padding: 5% 5.5% 6%;
     text-align: center;
     scrollbar-width: thin;
     scrollbar-color: rgba(46, 140, 200, 0.45) transparent;
@@ -163,44 +160,47 @@ body {
 }
 
 .invite-kicker {
-    font-family: "Twinkle Star", cursive, sans-serif;
-    font-size: clamp(0.78rem, 2.8cqi, 1.05rem);
-    letter-spacing: 0.08em;
+    font-family: var(--font-display);
+    font-size: clamp(0.7rem, 2.6cqi, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--sky-deep);
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.25rem;
 }
 
 .invite-heading {
-    font-family: "Twinkle Star", cursive, sans-serif;
-    font-size: clamp(1.55rem, 6.2cqi, 2.45rem);
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 8cqi, 3rem);
+    font-weight: 800;
     line-height: 1;
     color: var(--navy);
-    margin-bottom: 0.35rem;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.45rem;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75);
 }
 
 .boss-photo {
     display: flex;
     justify-content: center;
-    margin: 0.15rem 0 0.55rem;
+    margin: 0.2rem 0 0.75rem;
 }
 
 .boss-photo-gif {
-    width: clamp(72px, 34%, 132px);
+    width: clamp(110px, 48%, 190px);
     height: auto;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
     box-shadow:
-        0 0 0 3px rgba(255, 255, 255, 0.95),
-        0 0 0 5px rgba(94, 183, 232, 0.55),
-        0 8px 16px rgba(11, 58, 110, 0.22);
+        0 0 0 4px rgba(255, 255, 255, 0.98),
+        0 0 0 7px rgba(94, 183, 232, 0.55),
+        0 12px 22px rgba(11, 58, 110, 0.24);
 }
 
 .invite-body {
-    font-size: clamp(0.7rem, 2.55cqi, 0.9rem);
-    line-height: 1.45;
+    font-size: clamp(0.82rem, 3.1cqi, 1.02rem);
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .invite-body p + p,
@@ -209,15 +209,19 @@ body {
 .invite-body .details,
 .invite-body .fineprint,
 .invite-body .signoff {
-    margin-top: 0.55rem;
+    margin-top: 0.7rem;
 }
 
 .lead {
+    font-family: var(--font-display);
+    font-size: 1.05em;
     font-weight: 700;
     color: var(--navy);
 }
 
 .section-label {
+    font-family: var(--font-display);
+    font-size: 0.95em;
     font-weight: 700;
     color: var(--navy);
 }
@@ -227,13 +231,13 @@ body {
     counter-reset: agenda;
     text-align: left;
     display: grid;
-    gap: 0.35rem;
-    margin-top: 0.35rem;
+    gap: 0.45rem;
+    margin-top: 0.4rem;
 }
 
 .agenda li {
     position: relative;
-    padding-left: 1.45rem;
+    padding-left: 1.55rem;
     counter-increment: agenda;
 }
 
@@ -242,6 +246,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+    font-family: var(--font-display);
     font-weight: 700;
     color: var(--sky-deep);
 }
@@ -252,55 +257,62 @@ body {
 
 .details {
     display: grid;
-    gap: 0.45rem;
+    gap: 0.55rem;
     text-align: left;
-    margin-top: 0.7rem;
-    padding: 0.55rem 0.65rem;
-    border-radius: 10px;
-    background: rgba(159, 214, 245, 0.22);
+    margin-top: 0.85rem;
+    padding: 0.75rem 0.8rem;
+    border-radius: 14px;
+    background: rgba(159, 214, 245, 0.28);
 }
 
 .details dt {
-    font-size: 0.72em;
-    letter-spacing: 0.04em;
+    font-family: var(--font-display);
+    font-size: 0.68em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--sky-deep);
     font-weight: 700;
 }
 
 .details dd {
-    margin-top: 0.1rem;
+    margin-top: 0.15rem;
     color: var(--navy);
-    font-weight: 700;
+    font-weight: 800;
     overflow-wrap: anywhere;
 }
 
 .fineprint {
-    font-size: 0.9em;
+    font-size: 0.92em;
     color: #456681;
 }
 
 .emphasis {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--navy);
 }
 
 .signoff {
-    margin-top: 0.75rem;
-    line-height: 1.5;
+    margin-top: 0.9rem;
+    line-height: 1.55;
 }
 
 .signoff strong {
-    font-family: "Twinkle Star", cursive, sans-serif;
-    font-size: 1.25em;
+    font-family: var(--font-display);
+    font-size: 1.35em;
+    font-weight: 800;
     color: var(--navy);
 }
 
+/* Form stays in normal document flow at the end — no sticky overlay */
 .rsvp-form {
-    margin-top: 0.85rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.35rem;
     display: grid;
-    gap: 0.45rem;
-    padding-bottom: 0.2rem;
+    gap: 0.55rem;
+    padding: 0.85rem 0.75rem 0.9rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(94, 183, 232, 0.28);
 }
 
 .rsvp-label {
@@ -317,14 +329,15 @@ body {
 
 .rsvp-input {
     width: 100%;
-    min-height: 44px;
+    min-height: 48px;
     border: 1.5px solid rgba(46, 140, 200, 0.35);
     border-radius: 12px;
-    padding: 0.7rem 0.85rem;
-    font: inherit;
+    padding: 0.75rem 0.9rem;
+    font-family: var(--font-body);
     font-size: 16px;
+    font-weight: 700;
     color: var(--navy);
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.96);
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -338,12 +351,12 @@ body {
     appearance: none;
     border: none;
     border-radius: 14px;
-    min-height: 48px;
-    padding: 0.85rem 1rem;
-    font: inherit;
-    font-size: 1rem;
+    min-height: 52px;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
     font-weight: 700;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     color: #fff;
     cursor: pointer;
     background: linear-gradient(180deg, #3bbcff 0%, var(--telegram) 55%, var(--telegram-dark) 100%);
@@ -386,7 +399,8 @@ body {
 
 .rsvp-status {
     min-height: 1.2em;
-    font-size: 0.82em;
+    font-size: 0.88em;
+    font-weight: 700;
     color: var(--navy);
 }
 
@@ -398,7 +412,6 @@ body {
     color: #0f7a45;
 }
 
-/* Mobile phones: keep design aspect-ratio so text stays in the white frame */
 @media (max-width: 640px) {
     body {
         padding: 0;
@@ -413,7 +426,6 @@ body {
     }
 
     .invite {
-        container-type: inline-size;
         width: min(
             100vw,
             calc((100dvh - var(--safe-top) - var(--safe-bottom)) * 720 / 1280)
@@ -436,69 +448,37 @@ body {
     }
 
     .invite-panel {
-        top: 24.8%;
-        bottom: 30.2%;
-        left: 11.5%;
-        right: 11.5%;
+        top: 3.5%;
+        bottom: 3.5%;
+        left: 4%;
+        right: 4%;
+        border-radius: 14px;
     }
 
     .invite-scroll {
-        padding: 3.8% 4.8% 4.5%;
+        padding: 4.5% 4.5% 5.5%;
     }
 
     .invite-kicker {
-        font-size: clamp(0.72rem, 3.6vw, 0.95rem);
+        font-size: clamp(0.68rem, 3.2vw, 0.88rem);
     }
 
     .invite-heading {
-        font-size: clamp(1.45rem, 7.2vw, 2.1rem);
-        margin-bottom: 0.25rem;
-    }
-
-    .boss-photo {
-        margin: 0.1rem 0 0.4rem;
+        font-size: clamp(1.7rem, 8.5vw, 2.5rem);
     }
 
     .boss-photo-gif {
-        width: clamp(64px, 28vw, 110px);
-        box-shadow:
-            0 0 0 2px rgba(255, 255, 255, 0.95),
-            0 0 0 4px rgba(94, 183, 232, 0.55),
-            0 6px 12px rgba(11, 58, 110, 0.2);
+        width: clamp(120px, 46vw, 180px);
     }
 
     .invite-body {
-        font-size: clamp(0.68rem, 3.15vw, 0.86rem);
-        line-height: 1.42;
-    }
-
-    .invite-body p + p,
-    .invite-body .section-label,
-    .invite-body .agenda,
-    .invite-body .details,
-    .invite-body .fineprint,
-    .invite-body .signoff {
-        margin-top: 0.45rem;
-    }
-
-    .details {
-        margin-top: 0.55rem;
-        padding: 0.5rem 0.55rem;
-        gap: 0.35rem;
+        font-size: clamp(0.8rem, 3.5vw, 0.98rem);
     }
 
     .rsvp-form {
-        margin-top: 0.7rem;
-        gap: 0.4rem;
-        position: sticky;
-        bottom: 0;
-        padding-top: 0.35rem;
-        background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.82) 28%,
-            rgba(255, 255, 255, 0.94) 100%
-        );
+        position: static;
+        margin-top: 1.1rem;
+        background: rgba(255, 255, 255, 0.8);
     }
 
     .rsvp-input,
@@ -507,25 +487,19 @@ body {
     }
 }
 
-/* Very small phones */
 @media (max-width: 380px) {
     .invite-panel {
-        top: 24.5%;
-        bottom: 29.5%;
-        left: 11%;
-        right: 11%;
+        top: 3%;
+        bottom: 3%;
+        left: 3.5%;
+        right: 3.5%;
     }
 
     .boss-photo-gif {
-        width: 58px;
-    }
-
-    .invite-body {
-        font-size: 0.68rem;
+        width: clamp(108px, 50vw, 150px);
     }
 }
 
-/* Landscape phones: scroll the whole card, keep readable frame */
 @media (max-width: 900px) and (orientation: landscape) {
     body {
         align-items: flex-start;
@@ -548,7 +522,6 @@ body {
 
     .invite {
         width: min(100%, 480px);
-        container-type: inline-size;
     }
 }
 
