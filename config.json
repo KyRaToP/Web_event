@@ -1,4 +1,4 @@
 {
-  "notifyUrl": "REPLACE_WITH_CLOUDFLARE_WORKER_URL",
+  "notifyUrl": "https://baby-boss-dr.gopkalo-01-a6b.workers.dev",
   "telegramUsername": ""
 }
