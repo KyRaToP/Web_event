@@ -1,4 +1,4 @@
 {
-  "notifyUrl": "/api/notify",
+  "notifyUrl": "REPLACE_WITH_CLOUDFLARE_WORKER_URL",
   "telegramUsername": ""
 }

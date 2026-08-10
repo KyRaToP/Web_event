@@ -27,7 +27,10 @@ def load_dotenv(path: Path) -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        value = value.strip().strip('"').strip("'")
+        value = value.encode("utf-8").decode("utf-8-sig").strip()
+        value = "".join(ch for ch in value if ch.isprintable())
+        os.environ[key.strip()] = value
 
 
 def main() -> None:

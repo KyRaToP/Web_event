@@ -29,6 +29,10 @@ PORT = int(os.environ.get("PORT", "8000"))
 
 
 def load_dotenv(path: Path) -> None:
+    """Load key=value pairs from .env into process environment.
+
+    Values from .env always win, so updated tokens are picked up after restart.
+    """
     if not path.exists():
         return
 
@@ -39,7 +43,10 @@ def load_dotenv(path: Path) -> None:
         key, value = line.split("=", 1)
         key = key.strip()
         value = value.strip().strip('"').strip("'")
-        os.environ.setdefault(key, value)
+        # Remove BOM / non-printable chars that break Telegram auth.
+        value = value.encode("utf-8").decode("utf-8-sig").strip()
+        value = "".join(ch for ch in value if ch.isprintable())
+        os.environ[key] = value
 
 
 def send_telegram_message(token: str, chat_id: str, text: str) -> None:
