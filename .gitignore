@@ -3,3 +3,7 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Personal photos — add locally, do not commit
+assets/birthday-person.gif
+assets/birthday-person.jpg

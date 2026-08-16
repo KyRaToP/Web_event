@@ -1,5 +1,5 @@
 {
-  "notifyUrl": "https://baby-boss-dr.gopkalo-01-a6b.workers.dev",
+  "notifyUrl": "https://YOUR-WORKER.workers.dev",
   "telegramUsername": "",
-  "turnstileSiteKey": "0x4AAAAAAER_aS-3SNfEK2me"
+  "turnstileSiteKey": ""
 }
