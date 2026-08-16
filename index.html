@@ -11,7 +11,7 @@
     <meta name="description" content="Закрытая вечеринка в честь 1-го Юбилея Михаила">
     <meta property="og:title" content="Baby Boss — приглашение на 1 год">
     <meta property="og:description" content="Приглашаю вас на закрытую вечеринку в честь моего 1-го Юбилея">
-    <meta property="og:image" content="assets/design.jpg">
+    <meta property="og:image" content="https://kyratop.github.io/Web_event/assets/design.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
@@ -84,7 +84,7 @@
                     </p>
                 </div>
 
-                <form class="rsvp-form" id="rsvp-form">
+                    <form class="rsvp-form" id="rsvp-form">
                     <label class="rsvp-label" for="guest-name">Ваше имя</label>
                     <input
                         class="rsvp-input"
@@ -96,15 +96,25 @@
                         autocomplete="name"
                         required
                     >
+                    <div
+                        class="turnstile-box"
+                        id="turnstile-box"
+                        hidden
+                    ></div>
                     <button class="rsvp-btn" type="submit" id="rsvp-btn">
                         Я получил приглашение
                     </button>
+                    <p class="rsvp-consent">
+                        Нажимая кнопку, вы сообщаете организатору своё имя
+                        через уведомление в Telegram.
+                    </p>
                     <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>
     </main>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script src="js/script.js" defer></script>
 </body>
 </html>

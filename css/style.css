@@ -404,6 +404,21 @@ body {
     animation: none;
 }
 
+.turnstile-box {
+    display: flex;
+    justify-content: center;
+    min-height: 65px;
+    margin: 0.15rem 0 0.1rem;
+}
+
+.rsvp-consent {
+    margin: 0.15rem 0 0;
+    font-size: 0.78em;
+    line-height: 1.35;
+    font-weight: 600;
+    color: #234868;
+}
+
 .rsvp-status {
     min-height: 1.2em;
     font-size: 0.88em;

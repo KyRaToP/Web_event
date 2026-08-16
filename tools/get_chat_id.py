@@ -4,7 +4,7 @@ Helper script: find your Telegram chat_id.
 Steps:
 1. Create a bot with @BotFather and put TELEGRAM_BOT_TOKEN into .env
 2. Open Telegram, find your bot, press Start / send any message
-3. Run: python get_chat_id.py
+3. From project root run: python tools/get_chat_id.py
 4. Copy chat_id into TELEGRAM_CHAT_ID in .env
 """
 
