@@ -3,16 +3,18 @@
  *
  * Security:
  * - CORS allowlist (GitHub Pages + local dev)
- * - Cloudflare Turnstile verification (when TURNSTILE_SECRET_KEY is set)
+ * - Cloudflare Turnstile verification (required: TURNSTILE_SECRET_KEY)
  * - Soft rate limit via Cache API (per client IP)
+ * - POST without Origin is rejected (browser CORS is not enough against curl)
  *
  * Secrets (Cloudflare Dashboard → Settings → Variables / Secrets):
  * - TELEGRAM_BOT_TOKEN
  * - TELEGRAM_CHAT_ID
- * - TURNSTILE_SECRET_KEY (optional but recommended)
+ * - TURNSTILE_SECRET_KEY (required in production; missing secret → 503)
  */
 
 const MAX_GUEST_NAME_LENGTH = 60;
+const MAX_NOTIFY_BODY_BYTES = 4096;
 const RATE_LIMIT_MAX = 8;
 const RATE_LIMIT_WINDOW_SECONDS = 3600;
 
@@ -55,11 +57,7 @@ function corsHeadersFor(request, env) {
 }
 
 function clientIp(request) {
-  return (
-    request.headers.get("CF-Connecting-IP") ||
-    request.headers.get("X-Forwarded-For") ||
-    "unknown"
-  );
+  return request.headers.get("CF-Connecting-IP") || "unknown";
 }
 
 async function isRateLimited(request) {
@@ -93,10 +91,18 @@ async function isRateLimited(request) {
 
 async function verifyTurnstile(token, secret, request) {
   if (!secret) {
-    return { ok: true, skipped: true };
+    return {
+      ok: false,
+      status: 503,
+      error: "Turnstile is not configured on the Worker.",
+    };
   }
   if (!token) {
-    return { ok: false, error: "Подтвердите, что вы не робот (Turnstile)." };
+    return {
+      ok: false,
+      status: 403,
+      error: "Подтвердите, что вы не робот (Turnstile).",
+    };
   }
 
   const form = new FormData();
@@ -116,7 +122,11 @@ async function verifyTurnstile(token, secret, request) {
   });
 
   if (!data.success) {
-    return { ok: false, error: "Проверка Turnstile не пройдена." };
+    return {
+      ok: false,
+      status: 403,
+      error: "Проверка Turnstile не пройдена.",
+    };
   }
   return { ok: true };
 }
@@ -145,8 +155,7 @@ export default {
     }
 
     const origin = request.headers.get("Origin") || "";
-    // Browsers send Origin; direct curl may omit it — still rate-limit + Turnstile.
-    if (origin && !getAllowedOrigins(env).includes(origin)) {
+    if (!origin || !getAllowedOrigins(env).includes(origin)) {
       return jsonResponse(
         { ok: false, error: "Origin not allowed." },
         403,
@@ -161,6 +170,15 @@ export default {
           error: "Слишком много запросов. Попробуйте позже.",
         },
         429,
+        cors
+      );
+    }
+
+    const contentLength = Number(request.headers.get("Content-Length") || "0");
+    if (contentLength > MAX_NOTIFY_BODY_BYTES) {
+      return jsonResponse(
+        { ok: false, error: "Слишком большое тело запроса." },
+        413,
         cors
       );
     }
@@ -189,7 +207,7 @@ export default {
       if (!turnstile.ok) {
         return jsonResponse(
           { ok: false, error: turnstile.error || "Turnstile failed." },
-          403,
+          turnstile.status || 403,
           cors
         );
       }

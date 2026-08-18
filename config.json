@@ -1,5 +1,5 @@
 {
-  "notifyUrl": "https://YOUR-WORKER.workers.dev",
+  "notifyUrl": "/api/notify",
   "telegramUsername": "",
   "turnstileSiteKey": ""
 }
