@@ -1,5 +1,5 @@
 {
   "notifyUrl": "https://web-event.gopkalo-01-a6b.workers.dev",
-  "telegramUsername": "",
-  "turnstileSiteKey": ""
+  "telegramUsername": "Web_prigloss_bot",
+  "turnstileSiteKey": "0x4AAAAAAEV3xyyGx-b-oKbjK5N6HUtR8eQ"
 }
