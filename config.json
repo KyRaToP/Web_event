@@ -1,5 +1,5 @@
 {
-  "notifyUrl": "/api/notify",
+  "notifyUrl": "https://web-event.gopkalo-01-a6b.workers.dev",
   "telegramUsername": "",
   "turnstileSiteKey": ""
 }
